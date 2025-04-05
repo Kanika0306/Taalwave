@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,9 +64,9 @@ export default {
           ring: 'hsl(var(--sidebar-ring))'
         },
         music: {
-          base: '#121212',
-          surface: '#181818',
-          elevated: '#282828',
+          base: '#101935',
+          surface: '#182040',
+          elevated: '#2a3352',
           highlight: '#1DB954',
           purple: '#9F2BFF',
           blue: '#2D9BFF',

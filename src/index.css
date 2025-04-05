@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -6,22 +7,22 @@
 
 @layer base {
   :root {
-    --background: 0 0% 7%;
+    --background: 220 50% 10%;
     --foreground: 0 0% 98%;
 
-    --card: 0 0% 9%;
+    --card: 220 45% 12%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 9%;
+    --popover: 220 45% 12%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 142 72% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 16%;
+    --secondary: 220 40% 16%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 0 0% 16%;
+    --muted: 220 40% 16%;
     --muted-foreground: 0 0% 63.9%;
 
     --accent: 142 72% 55%;
@@ -30,19 +31,19 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
+    --border: 220 40% 16%;
+    --input: 220 40% 16%;
     --ring: 142 72% 55%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 9%;
+    --sidebar-background: 220 45% 12%;
     --sidebar-foreground: 0 0% 98%;
     --sidebar-primary: 142 72% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 16%;
+    --sidebar-accent: 220 40% 16%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 14.9%;
+    --sidebar-border: 220 40% 16%;
     --sidebar-ring: 142 72% 55%;
 
     --neon-blue: 195 100% 50%;
@@ -57,11 +58,12 @@
 
   html, body {
     font-family: 'Inter', sans-serif;
-    @apply bg-music-base text-foreground;
+    background-color: #101935; /* Dark blue base color */
+    @apply text-foreground;
     background-image: 
-      radial-gradient(circle at 15% 50%, rgba(0, 200, 255, 0.08) 0%, transparent 25%),
-      radial-gradient(circle at 85% 30%, rgba(0, 200, 255, 0.08) 0%, transparent 25%),
-      linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 100, 255, 0.05) 100%);
+      radial-gradient(circle at 15% 50%, rgba(0, 200, 255, 0.12) 0%, transparent 30%),
+      radial-gradient(circle at 85% 30%, rgba(0, 200, 255, 0.12) 0%, transparent 30%),
+      linear-gradient(180deg, rgba(8, 15, 40, 0.8) 0%, rgba(0, 100, 255, 0.15) 100%);
     background-attachment: fixed;
   }
 
@@ -70,7 +72,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-music-base;
+    background-color: #101935;
   }
 
   ::-webkit-scrollbar-thumb {
