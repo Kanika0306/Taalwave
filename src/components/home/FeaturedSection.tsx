@@ -1,5 +1,5 @@
 
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Play } from "lucide-react";
 
 const FeaturedSection = ({ title, seeAllLink }: { title: string, seeAllLink: string }) => {
   // This is placeholder data - in a real app, fetch from API
