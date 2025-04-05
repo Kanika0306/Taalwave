@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -70,7 +69,9 @@ export default {
           highlight: '#1DB954',
           purple: '#9F2BFF',
           blue: '#2D9BFF',
-        }
+        },
+        'neon-blue': 'hsl(var(--neon-blue))',
+        'neon-blue-glow': 'hsl(var(--neon-blue-glow))',
       },
       borderRadius: {
         lg: 'var(--radius)',
