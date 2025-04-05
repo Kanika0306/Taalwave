@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { 
   Smile, Frown, Cloud, Sun, Moon, Heart, Music, 
-  Headphones, Zap, Coffee, Glasses, Party, Umbrella
+  Headphones, Zap, Coffee, Glasses, Umbrella, PartyPopper
 } from "lucide-react";
 import { 
   Select, 
@@ -22,6 +22,8 @@ import {
   RadioGroup,
   RadioGroupItem
 } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent } from "@/components/ui/card";
 
 type Mood = {
   id: string;
@@ -108,7 +110,7 @@ const moods: Mood[] = [
   { 
     id: "party", 
     name: "Party", 
-    icon: <Party className="h-6 w-6" />, 
+    icon: <PartyPopper className="h-6 w-6" />, 
     color: "from-purple-500 to-pink-500",
     description: "Hit tracks to get the party started",
     sample: ["Party Anthems", "Dance Hits", "Saturday Night"]
@@ -125,7 +127,20 @@ const moods: Mood[] = [
 
 const genres = [
   "Pop", "Rock", "Hip-Hop", "R&B", "Electronic", 
-  "Jazz", "Classical", "Country", "Indie", "Latin"
+  "Jazz", "Classical", "Country", "Indie", "Latin",
+  "K-Pop", "Alternative", "Blues", "Folk", "Reggae"
+];
+
+// New advanced creation options
+const tempos = [
+  { id: "slow", name: "Slow & Easy", bpm: "60-90 BPM" },
+  { id: "medium", name: "Medium", bpm: "90-120 BPM" },
+  { id: "upbeat", name: "Upbeat", bpm: "120-140 BPM" },
+  { id: "fast", name: "Fast & Energetic", bpm: "140+ BPM" }
+];
+
+const decades = [
+  "2020s", "2010s", "2000s", "1990s", "1980s", "1970s", "1960s", "Classic"
 ];
 
 const MoodPlaylistGenerator = () => {
@@ -133,6 +148,10 @@ const MoodPlaylistGenerator = () => {
   const [playlistName, setPlaylistName] = useState("");
   const [genre, setGenre] = useState("");
   const [duration, setDuration] = useState("30");
+  const [selectedDecade, setSelectedDecade] = useState("");
+  const [selectedTempo, setSelectedTempo] = useState("");
+  const [includeInstrumental, setIncludeInstrumental] = useState(false);
+  const [advancedOptions, setAdvancedOptions] = useState(false);
   
   const createPlaylist = () => {
     // In a real app, this would call an API to create the playlist
@@ -140,7 +159,12 @@ const MoodPlaylistGenerator = () => {
       name: playlistName || `${selectedMood?.name} Mix`,
       mood: selectedMood?.id,
       genre,
-      duration: parseInt(duration)
+      duration: parseInt(duration),
+      ...(advancedOptions && {
+        decade: selectedDecade,
+        tempo: selectedTempo,
+        includeInstrumental
+      })
     });
     
     // Reset form or show confirmation
@@ -250,6 +274,73 @@ const MoodPlaylistGenerator = () => {
                 </RadioGroup>
               </div>
             </div>
+            
+            {/* Advanced Options Toggle */}
+            <div className="pt-2">
+              <button 
+                type="button"
+                onClick={() => setAdvancedOptions(!advancedOptions)}
+                className="text-sm text-music-highlight hover:text-music-highlight/80 flex items-center gap-2"
+              >
+                {advancedOptions ? "Hide" : "Show"} Advanced Options
+              </button>
+            </div>
+            
+            {/* Advanced Options Panel */}
+            {advancedOptions && (
+              <Card className="bg-music-elevated border-music-base">
+                <CardContent className="pt-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium mb-2">
+                        Era/Decade
+                      </label>
+                      <Select value={selectedDecade} onValueChange={setSelectedDecade}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Any decade" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {decades.map(d => (
+                            <SelectItem key={d} value={d}>{d}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium mb-2">
+                        Tempo/Energy
+                      </label>
+                      <Select value={selectedTempo} onValueChange={setSelectedTempo}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Any tempo" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {tempos.map(t => (
+                            <SelectItem key={t.id} value={t.id}>
+                              {t.name} <span className="text-xs opacity-70">({t.bpm})</span>
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-6">
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        id="instrumental"
+                        checked={includeInstrumental}
+                        onChange={(e) => setIncludeInstrumental(e.target.checked)}
+                        className="rounded border-gray-600 text-music-highlight focus:ring-music-highlight"
+                      />
+                      <Label htmlFor="instrumental">Include instrumental tracks</Label>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
             
             <Button 
               onClick={createPlaylist} 
