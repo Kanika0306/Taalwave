@@ -1,5 +1,6 @@
 
 import { Search, Mic } from "lucide-react";
+import MoodPlaylistGenerator from "@/components/playlists/MoodPlaylistGenerator";
 
 const SearchPage = () => {
   // These would come from an API in a real application
@@ -33,6 +34,12 @@ const SearchPage = () => {
           </button>
         </div>
       </div>
+      
+      {/* Add the Mood Playlist Generator section */}
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold mb-4">Create Playlist by Mood</h2>
+        <MoodPlaylistGenerator />
+      </section>
       
       <section>
         <h2 className="text-2xl font-bold mb-4">Browse All</h2>
