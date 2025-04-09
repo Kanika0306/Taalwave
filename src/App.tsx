@@ -12,67 +12,70 @@ import NowPlayingPage from "./pages/NowPlayingPage";
 import AccountPage from "./pages/AccountPage";
 import BroadcastPage from "./pages/BroadcastPage";
 import NotFound from "./pages/NotFound";
+import { AudioPlayerProvider } from "./contexts/AudioPlayerContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route 
-            path="/" 
-            element={
-              <PageLayout>
-                <HomePage />
-              </PageLayout>
-            } 
-          />
-          <Route 
-            path="/search" 
-            element={
-              <PageLayout>
-                <SearchPage />
-              </PageLayout>
-            } 
-          />
-          <Route 
-            path="/library" 
-            element={
-              <PageLayout>
-                <LibraryPage />
-              </PageLayout>
-            } 
-          />
-          <Route 
-            path="/now-playing" 
-            element={
-              <PageLayout>
-                <NowPlayingPage />
-              </PageLayout>
-            } 
-          />
-          <Route 
-            path="/account" 
-            element={
-              <PageLayout>
-                <AccountPage />
-              </PageLayout>
-            } 
-          />
-          <Route 
-            path="/broadcast" 
-            element={
-              <PageLayout>
-                <BroadcastPage />
-              </PageLayout>
-            } 
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <AudioPlayerProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <PageLayout>
+                  <HomePage />
+                </PageLayout>
+              } 
+            />
+            <Route 
+              path="/search" 
+              element={
+                <PageLayout>
+                  <SearchPage />
+                </PageLayout>
+              } 
+            />
+            <Route 
+              path="/library" 
+              element={
+                <PageLayout>
+                  <LibraryPage />
+                </PageLayout>
+              } 
+            />
+            <Route 
+              path="/now-playing" 
+              element={
+                <PageLayout>
+                  <NowPlayingPage />
+                </PageLayout>
+              } 
+            />
+            <Route 
+              path="/account" 
+              element={
+                <PageLayout>
+                  <AccountPage />
+                </PageLayout>
+              } 
+            />
+            <Route 
+              path="/broadcast" 
+              element={
+                <PageLayout>
+                  <BroadcastPage />
+                </PageLayout>
+              } 
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </AudioPlayerProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

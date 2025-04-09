@@ -1,0 +1,48 @@
+
+[
+  {
+    "id": "1",
+    "title": "Blinding Lights",
+    "artist": "The Weeknd",
+    "album": "After Hours",
+    "cover": "https://picsum.photos/seed/album1/400/400",
+    "audioSrc": "https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3",
+    "duration": 217
+  },
+  {
+    "id": "2",
+    "title": "Sunset Dreams",
+    "artist": "Chill Wave",
+    "album": "Summer Beats",
+    "cover": "https://picsum.photos/seed/album2/400/400",
+    "audioSrc": "https://assets.mixkit.co/music/preview/mixkit-hip-hop-02-621.mp3",
+    "duration": 182
+  },
+  {
+    "id": "3",
+    "title": "Mountain Echo",
+    "artist": "Nature Sounds",
+    "album": "Peaceful Escape",
+    "cover": "https://picsum.photos/seed/album3/400/400",
+    "audioSrc": "https://assets.mixkit.co/music/preview/mixkit-serene-view-443.mp3",
+    "duration": 240
+  },
+  {
+    "id": "4",
+    "title": "Urban Rhythm",
+    "artist": "City Pulse",
+    "album": "Downtown",
+    "cover": "https://picsum.photos/seed/album4/400/400",
+    "audioSrc": "https://assets.mixkit.co/music/preview/mixkit-hazy-after-hours-132.mp3",
+    "duration": 194
+  },
+  {
+    "id": "5",
+    "title": "Electric Dreams",
+    "artist": "Synth Wave",
+    "album": "Neon Nights",
+    "cover": "https://picsum.photos/seed/album5/400/400",
+    "audioSrc": "https://assets.mixkit.co/music/preview/mixkit-reflections-1126.mp3",
+    "duration": 226
+  }
+]
