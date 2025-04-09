@@ -9,6 +9,8 @@ import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage";
 import LibraryPage from "./pages/LibraryPage";
 import NowPlayingPage from "./pages/NowPlayingPage";
+import AccountPage from "./pages/AccountPage";
+import BroadcastPage from "./pages/BroadcastPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -49,6 +51,22 @@ const App = () => (
             element={
               <PageLayout>
                 <NowPlayingPage />
+              </PageLayout>
+            } 
+          />
+          <Route 
+            path="/account" 
+            element={
+              <PageLayout>
+                <AccountPage />
+              </PageLayout>
+            } 
+          />
+          <Route 
+            path="/broadcast" 
+            element={
+              <PageLayout>
+                <BroadcastPage />
               </PageLayout>
             } 
           />

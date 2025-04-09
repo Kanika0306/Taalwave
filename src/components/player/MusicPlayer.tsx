@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { 
   Play, Pause, SkipBack, SkipForward, Volume2, Repeat, Shuffle, 
-  Mic, Maximize2, List, Heart
+  Mic, Maximize2, List, Heart, FileText, ListMusic
 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 
@@ -10,6 +10,7 @@ const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const duration = 217; // 3:37 in seconds
+  const [isLiked, setIsLiked] = useState(false);
 
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
@@ -18,7 +19,7 @@ const MusicPlayer = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-music-base border-t border-border p-4 z-50 flex items-center">
+    <div className="fixed bottom-0 left-0 right-0 bg-music-base border-t border-5 border-music-elevated p-4 z-50 flex items-center">
       <div className="flex items-center w-1/4">
         <img 
           src="https://picsum.photos/seed/album1/80/80" 
@@ -29,8 +30,10 @@ const MusicPlayer = () => {
           <h4 className="font-medium">Blinding Lights</h4>
           <p className="text-sm text-muted-foreground">The Weeknd</p>
         </div>
-        <button className="ml-4">
-          <Heart className="h-5 w-5 hover:text-music-highlight transition-colors" />
+        <button className="ml-4" onClick={() => setIsLiked(!isLiked)}>
+          <Heart 
+            className={`h-5 w-5 ${isLiked ? 'text-music-purple fill-music-purple' : 'hover:text-music-highlight transition-colors'}`} 
+          />
         </button>
       </div>
       
@@ -78,7 +81,10 @@ const MusicPlayer = () => {
           <Mic className="h-4 w-4" />
         </button>
         <button className="text-foreground/80 hover:text-foreground transition-colors">
-          <List className="h-4 w-4" />
+          <FileText className="h-4 w-4" />
+        </button>
+        <button className="text-foreground/80 hover:text-foreground transition-colors">
+          <ListMusic className="h-4 w-4" />
         </button>
         <div className="flex items-center gap-2">
           <Volume2 className="h-4 w-4" />

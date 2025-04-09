@@ -1,6 +1,6 @@
 
 import { NavLink } from "react-router-dom";
-import { Home, Search, Library, PlusSquare, Heart, Disc3 } from "lucide-react";
+import { Home, Search, Library, PlusSquare, Heart, Disc3, Mic, ListMusic, FileText, User } from "lucide-react";
 
 const Sidebar = () => {
   return (
@@ -8,7 +8,7 @@ const Sidebar = () => {
       <div className="p-6">
         <h1 className="text-2xl font-bold flex items-center gap-2 mb-8">
           <Disc3 className="h-7 w-7 text-music-highlight animate-pulse-glow" />
-          <span>Aurify</span>
+          <span>Taalwave</span>
         </h1>
         
         <nav className="mb-8">
@@ -31,6 +31,18 @@ const Sidebar = () => {
                 <span>Your Library</span>
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/broadcast" className={({isActive}) => `flex items-center gap-3 p-2 rounded-md ${isActive ? 'bg-music-elevated text-music-highlight' : 'hover:bg-music-surface'}`}>
+                <Mic className="h-5 w-5" />
+                <span>Broadcast</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/account" className={({isActive}) => `flex items-center gap-3 p-2 rounded-md ${isActive ? 'bg-music-elevated text-music-highlight' : 'hover:bg-music-surface'}`}>
+                <User className="h-5 w-5" />
+                <span>My Account</span>
+              </NavLink>
+            </li>
           </ul>
         </nav>
         
@@ -42,6 +54,14 @@ const Sidebar = () => {
           <button className="flex items-center gap-3 p-2 rounded-md hover:bg-music-surface w-full">
             <Heart className="h-5 w-5" />
             <span>Liked Songs</span>
+          </button>
+          <button className="flex items-center gap-3 p-2 rounded-md hover:bg-music-surface w-full">
+            <ListMusic className="h-5 w-5" />
+            <span>Queue</span>
+          </button>
+          <button className="flex items-center gap-3 p-2 rounded-md hover:bg-music-surface w-full">
+            <FileText className="h-5 w-5" />
+            <span>Lyrics</span>
           </button>
         </div>
       </div>
