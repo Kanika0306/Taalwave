@@ -7,6 +7,8 @@ import { Slider } from "@/components/ui/slider";
 import { useEffect, useState } from "react";
 import { useAudioPlayer } from "@/contexts/AudioPlayerContext";
 import { Progress } from "@/components/ui/progress";
+import { Button } from "../ui/button";
+import { toast } from "sonner";
 
 const MusicPlayer = () => {
   const { 
@@ -18,13 +20,19 @@ const MusicPlayer = () => {
     currentTime,
     duration,
     seekTo,
-    setVolume
+    setVolume,
+    play
   } = useAudioPlayer();
   
   const [isLiked, setIsLiked] = useState(false);
   const [volumeLevel, setVolumeLevel] = useState(70);
   const [isMuted, setIsMuted] = useState(false);
   const [prevVolume, setPrevVolume] = useState(70);
+
+  // Initialize volume when component mounts
+  useEffect(() => {
+    setVolume(volumeLevel);
+  }, []);
   
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
@@ -58,6 +66,15 @@ const MusicPlayer = () => {
   
   const handleProgressChange = (values: number[]) => {
     seekTo(values[0]);
+  };
+
+  const handlePlayClick = () => {
+    if (!isPlaying && currentSong) {
+      toast.success(`Playing: ${currentSong.title} by ${currentSong.artist}`, {
+        duration: 2000,
+      });
+    }
+    togglePlayPause();
   };
   
   // Calculate percentage for progress bar
@@ -121,7 +138,7 @@ const MusicPlayer = () => {
           </button>
           <button 
             className="bg-white rounded-full p-1.5 md:p-2 hover:scale-105 transition-transform"
-            onClick={togglePlayPause}
+            onClick={handlePlayClick}
           >
             {isPlaying ? (
               <Pause className="h-4 w-4 md:h-5 md:w-5 text-black" />

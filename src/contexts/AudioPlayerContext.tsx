@@ -47,6 +47,12 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       audioElement.current.addEventListener('loadedmetadata', () => {
         setDuration(audioElement.current?.duration || 0);
       });
+
+      // Set initial audio source
+      if (currentSong) {
+        audioElement.current.src = currentSong.audioSrc;
+        audioElement.current.load();
+      }
     }
     
     return () => {
@@ -62,8 +68,11 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     if (currentSong && audioElement.current) {
       audioElement.current.src = currentSong.audioSrc;
       audioElement.current.load();
+      
+      // If we were playing before changing songs, continue playing
       if (isPlaying) {
         audioElement.current.play()
+          .then(() => console.log("Playing new song"))
           .catch(error => console.error("Playback failed:", error));
       }
     }
@@ -80,10 +89,17 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
   };
   
   const play = () => {
+    console.log("Play requested");
     if (audioElement.current) {
+      console.log("Playing audio:", audioElement.current.src);
       audioElement.current.play()
-        .then(() => setIsPlaying(true))
+        .then(() => {
+          console.log("Playback started");
+          setIsPlaying(true);
+        })
         .catch(error => console.error("Playback failed:", error));
+    } else {
+      console.error("Audio element not available");
     }
   };
   
@@ -95,6 +111,7 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
   };
   
   const togglePlayPause = () => {
+    console.log("Toggle play/pause, current state:", isPlaying);
     if (isPlaying) {
       pause();
     } else {
