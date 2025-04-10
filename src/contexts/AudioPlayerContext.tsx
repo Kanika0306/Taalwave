@@ -47,6 +47,9 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       audioElement.current.addEventListener('loadedmetadata', () => {
         setDuration(audioElement.current?.duration || 0);
       });
+      audioElement.current.addEventListener('error', (e) => {
+        console.error("Audio loading error:", e);
+      });
 
       // Set initial audio source
       if (currentSong) {
@@ -66,6 +69,7 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
   useEffect(() => {
     // Handle song change
     if (currentSong && audioElement.current) {
+      console.log("Loading song:", currentSong.title, "Source:", currentSong.audioSrc);
       audioElement.current.src = currentSong.audioSrc;
       audioElement.current.load();
       
