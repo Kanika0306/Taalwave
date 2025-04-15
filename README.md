@@ -47,4 +47,4 @@ Taalwave is a web application that allows users to create personalized soundscap
 
 5. **Run locally**
     goto browser and open this url
-    [text](http://localhost:8080/)
+    http://localhost:8080/
