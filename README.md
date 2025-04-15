@@ -27,7 +27,7 @@ Taalwave is a web application that allows users to create personalized soundscap
 1.  **Clone the repository:**
 
     ```sh
-    git clone https://github.com/Kanika0306/aurify-soundscape-studio.git
+    git clone https://github.com/Kanika0306/Taalwave.git
     ```
 2.  **Navigate to the project directory:**
 
