@@ -32,7 +32,7 @@ Taalwave is a web application that allows users to create personalized soundscap
 2.  **Navigate to the project directory:**
 
     ```sh
-    cd <YOUR_PROJECT_NAME>
+    cd Taalwave
     ```
 3.  **Install dependencies:**
 
