@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, CreditCard, Lock, Info, CheckCircle, Banknote } from "lucide-react";
+import { Loader2, CreditCard, Lock, Info, CheckCircle, Banknote, DollarSign, Smartphone } from "lucide-react";
 import PaymentMethodSelector from "@/components/payment/PaymentMethodSelector";
 import PaymentSummary from "@/components/payment/PaymentSummary";
 import SecurePaymentNote from "@/components/payment/SecurePaymentNote";
