@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { CreditCard, DollarSign, Smartphone } from "lucide-react";
+import { CreditCard, DollarSign, Smartphone, Banknote } from "lucide-react";
 
 export default function PaymentMethodSelector() {
   const [selectedMethod, setSelectedMethod] = useState<string>("credit-card");
@@ -9,7 +9,8 @@ export default function PaymentMethodSelector() {
   const paymentMethods = [
     { id: "credit-card", label: "Credit Card", icon: CreditCard },
     { id: "paypal", label: "PayPal", icon: DollarSign },
-    { id: "mobile-payment", label: "Mobile Payment", icon: Smartphone }
+    { id: "mobile-payment", label: "Mobile Payment", icon: Smartphone },
+    { id: "upi", label: "UPI", icon: Banknote }
   ];
 
   return (
